@@ -1,14 +1,12 @@
 <template>
-
-  <router-view/>
+  <p>Product By Name</p>
 </template>
 
 <script>
 export default {
-  
+
 }
 </script>
-
 
 <style>
 

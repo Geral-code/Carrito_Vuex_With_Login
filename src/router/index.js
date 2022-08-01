@@ -1,16 +1,17 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
+
 
 const routes = [
-
 {
-  path: '/',
+  path: '/', 
+  
 
 },
 {
   path: '/login',
   name: 'login',
-  component: () => import(/*webpackChunkName: "Login" */ '../views/LoginView.vue'),
+  component: () => import(/* webpackChunkName: "login" */ '../views/LoginView.vue'),
 },
 {
   path: '/register',
@@ -19,31 +20,26 @@ const routes = [
 },
 {
   path: '/products',
-  name:'products-app',
-  components: () => import(/*webpackChunkName: "Productos" */ '../products/HomeProducts.vue'),
+  name: 'products-app',
+  component: () => import(/*webpackChunkName: "Productos" */ '../products/HomeProducts.vue'),
   children: [
     {
       path: 'list-products',
       name: 'list-products',
-      components: () => import(/*webpackChunkName: "ListaProductos" */ '../products/views/ListProductsView.vue'),
+      component: () => import(/*webpackChunkName: "ListaProductos" */ '../products/views/ListProductsView.vue'),
     },
     {
       path: ':id',
       name: 'product-id',
-      components: () => import(/*webpackChunkName: "ProductoId" */ '..products/views/ProductByView.vue'),
-      
+      component: () => import(/*webpackChunkName: "ProductoId" */ '../products/views/ProductByIdView.vue'),
+
     }
   ]
-
-
 },
-
-
-
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

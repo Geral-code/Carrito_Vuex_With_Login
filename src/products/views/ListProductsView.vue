@@ -1,0 +1,38 @@
+<template>
+  <p>Este es ListProducts</p>
+  <div class="container">
+    <div class= "row d-flex justify-content-between">
+      <CardProducto v-for="producto of productos" :key="producto.id" :productoCard="producto"/>
+
+    </div>
+  </div>  
+  <!-- <pre>{{ productos }} </pre> -->
+</template>
+
+<script>
+import { mapActions, mapState } from 'vuex';
+import CardProducto from '../components/CardProducto.vue';
+
+export default {
+  name: 'Homeview',
+  components: {
+    CardProducto
+  },
+  methods: {
+    ...mapActions({
+      products: 'getProductsApi'
+
+    })
+  },
+  computed: {
+    ...mapState(['productos'])
+  },
+  created(){
+    this.products();
+  }
+}
+</script>
+
+<style>
+
+</style>
